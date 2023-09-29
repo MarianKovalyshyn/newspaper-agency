@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def index(request) -> render:
+    """View function for the home page of the site."""
+    return render(request, "agency/index.html")
