@@ -2,6 +2,7 @@
 
 {% block content %}
   <h1>Our redactors</h1>
+  <h2><a href="{% url 'agency:redactor-create' %}">Add</a></h2>
 
   {% if redactor_list %}
     <table class="table">

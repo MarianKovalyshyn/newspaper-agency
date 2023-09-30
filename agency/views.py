@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
+from agency.forms import RedactorCreationForm
 from agency.models import Redactor
 
 
@@ -14,3 +16,9 @@ def index(request) -> render:
 
 class RedactorListView(generic.ListView):
     model = Redactor
+
+
+class RedactorCreateView(generic.CreateView):
+    model = Redactor
+    success_url = reverse_lazy("agency:redactor-list")
+    form_class = RedactorCreationForm
