@@ -14,7 +14,7 @@
     </div>
 
     <!-- Center of the navbar -->
-    <a class="navbar-brand mx-auto" href="">
+    <a class="navbar-brand mx-auto" href="{% url 'agency:index' %}">
       <h1>The Lviv Post</h1>
       <p class="slogan">Every Story, Every Angle</p>
     </a>
@@ -33,9 +33,12 @@
           <a class="nav-link" href="">Login</a>
         </li>
       {% endif %}
-      <li class="nav-item">
-        <a class="nav-link" href="">It's your {{ num_visits }} time here. Thank you for trusting us!</a>
-      </li>
+
+      {% if request.path == '/' %}
+        <li class="nav-item">
+          <a class="nav-link" href="">It's your {{ num_visits }} time here. Thank you for trusting us!</a>
+        </li>
+      {% endif %}
     </div>
   </div>
 </nav>

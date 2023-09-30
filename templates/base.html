@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  {% block title %}<title>Mate Post</title>{% endblock %}
+  {% block title %}<title>The Lviv Post</title>{% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet"
@@ -14,7 +14,12 @@
 </head>
 
 <body>
-{% block content %}{% endblock %}
+{% block sidebar %}
+  {% include "includes/header.html" %}
+{% endblock %}
+{% block content %}
+
+{% endblock %}
 </body>
 
 </html>
