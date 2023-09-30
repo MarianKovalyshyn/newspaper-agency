@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <!-- Left side of the navbar -->
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'agency:redactor-list' %}">Our redactors</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">Newspapers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">Topics</a>
+      </li>
+    </div>
+
+    <!-- Center of the navbar -->
+    <a class="navbar-brand mx-auto" href="">
+      <h1>The Lviv Post</h1>
+      <p class="slogan">Every Story, Every Angle</p>
+    </a>
+
+    <!-- Right side of the navbar -->
+    <div class="navbar-nav ml-auto">
+      {% if user.is_authenticated %}
+        <li class="nav-item">
+          <span class="navbar-text">User: <a href="">{{ user.get_username }}</a></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Logout</a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="">Login</a>
+        </li>
+      {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" href="">It's your {{ num_visits }} time here. Thank you for trusting us!</a>
+      </li>
+    </div>
+  </div>
+</nav>
