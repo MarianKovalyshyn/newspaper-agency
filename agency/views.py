@@ -32,3 +32,8 @@ class RedactorUpdateView(generic.UpdateView):
     model = Redactor
     success_url = reverse_lazy("agency:redactor-list")
     fields = ["first_name", "last_name", "years_of_experience"]
+
+
+class RedactorDeleteView(generic.DeleteView):
+    model = Redactor
+    success_url = reverse_lazy("agency:redactor-list")
