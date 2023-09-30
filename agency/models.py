@@ -9,6 +9,9 @@ class Topic(models.Model):
     def __str__(self) -> str:
         return self.name
 
+    def get_absolute_url(self) -> str:
+        return reverse("agency:topic-detail", kwargs={"pk": self.pk})
+
 
 class Redactor(AbstractUser):
     years_of_experience = models.IntegerField()
@@ -24,7 +27,7 @@ class Newspaper(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     published_date = models.DateTimeField()
-    topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
+    topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True, related_name="newspapers")
     publishers = models.ManyToManyField(Redactor, related_name="newspapers")
 
     def __str__(self) -> str:

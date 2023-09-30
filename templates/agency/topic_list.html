@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Topics</h1>
+  <h2><a href="{% url 'agency:topic-create' %}">Add new topic</a></h2>
+
+  {% if topic_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+      {% for topic in topic_list %}
+        <tr>
+          <td>{{ topic.id }}</td>
+          <td><a href="{{ topic.get_absolute_url }}">{{ topic.name }}</a></td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>We don't have any topics right now.</p>
+  {% endif %}
+{% endblock %}
