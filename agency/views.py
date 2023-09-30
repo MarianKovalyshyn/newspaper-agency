@@ -18,6 +18,10 @@ class RedactorListView(generic.ListView):
     model = Redactor
 
 
+class RedactorDetailView(generic.DetailView):
+    model = Redactor
+
+
 class RedactorCreateView(generic.CreateView):
     model = Redactor
     success_url = reverse_lazy("agency:redactor-list")
