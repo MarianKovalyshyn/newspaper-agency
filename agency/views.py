@@ -22,3 +22,9 @@ class RedactorCreateView(generic.CreateView):
     model = Redactor
     success_url = reverse_lazy("agency:redactor-list")
     form_class = RedactorCreationForm
+
+
+class RedactorUpdateView(generic.UpdateView):
+    model = Redactor
+    success_url = reverse_lazy("agency:redactor-list")
+    fields = ["first_name", "last_name", "years_of_experience"]
