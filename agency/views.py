@@ -16,6 +16,7 @@ def index(request) -> render:
 
 class RedactorListView(generic.ListView):
     model = Redactor
+    paginate_by = 5
 
 
 class RedactorDetailView(generic.DetailView):
@@ -41,6 +42,7 @@ class RedactorDeleteView(generic.DeleteView):
 
 class NewspaperListView(generic.ListView):
     model = Newspaper
+    paginate_by = 5
 
 
 class NewspaperDetailView(generic.DetailView):
@@ -66,6 +68,7 @@ class NewspaperDeleteView(generic.DeleteView):
 
 class TopicListView(generic.ListView):
     model = Topic
+    paginate_by = 5
 
 
 class TopicDetailView(generic.DetailView):
