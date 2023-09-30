@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from agency.forms import RedactorCreationForm
-from agency.models import Redactor
+from agency.models import Redactor, Newspaper
 
 
 def index(request) -> render:
@@ -37,3 +37,28 @@ class RedactorUpdateView(generic.UpdateView):
 class RedactorDeleteView(generic.DeleteView):
     model = Redactor
     success_url = reverse_lazy("agency:redactor-list")
+
+
+class NewspaperListView(generic.ListView):
+    model = Newspaper
+
+
+class NewspaperDetailView(generic.DetailView):
+    model = Newspaper
+
+
+class NewspaperCreateView(generic.CreateView):
+    model = Newspaper
+    success_url = reverse_lazy("agency:newspaper-list")
+    fields = "__all__"
+
+
+class NewspaperUpdateView(generic.UpdateView):
+    model = Newspaper
+    success_url = reverse_lazy("agency:newspaper-list")
+    fields = "__all__"
+
+
+class NewspaperDeleteView(generic.DeleteView):
+    model = Newspaper
+    success_url = reverse_lazy("agency:newspaper-list")

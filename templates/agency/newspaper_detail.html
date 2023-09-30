@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Title: {{ newspaper.title }}
+        <a href="{% url 'agency:newspaper-update' pk=newspaper.id %}">Edit</a>
+        <a href="{% url 'agency:newspaper-delete' pk=newspaper.id %}">Delete</a>
+  </h1>
+
+  <p><strong>Topic:</strong> {{ newspaper.topic }}</p>
+  <p><strong>Published at:</strong> {{ newspaper.published_date }}</p>
+  <p><strong>Published by:</strong>
+    {% for publisher in newspaper.publishers.all %}
+      <li>{{ publisher.first_name }} {{ publisher.last_name }} ({{ publisher.username }})</li>
+    {% endfor %}
+  </p>
+  <br>
+  <p>{{ newspaper.content }}</p>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Newspapers</h1>
+  <h2><a href="{% url 'agency:newspaper-create' %}">Create newspaper</a></h2>
+
+  {% if newspaper_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Topic</th>
+        <th>Date of publication</th>
+      </tr>
+      {% for newspaper in newspaper_list %}
+        <tr>
+          <td>{{ newspaper.id }}</td>
+          <td><a href="{{ newspaper.get_absolute_url }}">{{ newspaper.title }}</a></td>
+          <td>{{ newspaper.topic }}</td>
+          <td>{{ newspaper.published_date }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>We don't have any newspapers right now.</p>
+  {% endif %}
+{% endblock %}
