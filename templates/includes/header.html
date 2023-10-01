@@ -1,39 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <!-- Left side of the navbar -->
-    <div class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'agency:redactor-list' %}">Our redactors</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'agency:newspaper-list' %}">Newspapers</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'agency:topic-list' %}">Topics</a>
-      </li>
-    </div>
-
-    <!-- Center of the navbar -->
-    <a class="navbar-brand mx-auto" href="{% url 'agency:index' %}">
-      <h1>The Lviv Post</h1>
-      <p class="slogan">Every Story, Every Angle</p>
-    </a>
-
-    <!-- Right side of the navbar -->
-    <div class="navbar-nav ml-auto">
-
-      {% if user.is_authenticated %}
-        <li class="list-group-item">Hello, <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></li>
-        <li class="list-group-item"><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
-      {% else %}
-        <li class="list-group-item"><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
-      {% endif %}
-
-      {% if request.path == '/' %}
-        <li class="nav-item">
-          <a class="nav-link" href="">It's your {{ num_visits }} time here. Thank you for trusting us!</a>
-        </li>
-      {% endif %}
-    </div>
-  </div>
-</nav>
+<header id="header">
+  <h1><a href="{% url 'agency:index' %}">The Lviv Post</a></h1>
+  <nav class="links">
+    <ul>
+      <li><a href="{% url 'agency:redactor-list' %}">Our redactors</a></li>
+      <li><a href="{% url 'agency:newspaper-list' %}">Newspapers</a></li>
+      <li><a href="{% url 'agency:topic-list' %}">Topics</a></li>
+      <div class="user-info">
+        {% if user.is_authenticated %}
+          <li>Hello, <a href="{{ user.get_absolute_url }}"
+                        style="font-weight: bold; font-size: 15px">{{ user.get_username }}</a>
+            {% if request.path == '/' %}
+              | It's your {{ num_visits }} time here.
+            {% endif %}</li>
+          <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+        {% endif %}
+      </div>
+    </ul>
+  </nav>
+</header>
