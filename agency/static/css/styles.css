@@ -3610,3 +3610,39 @@ body.is-menu-visible #menu {
     }
 
 }
+
+/* Style for the list */
+.redactor-info ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.redactor-info li {
+    margin-bottom: 10px;
+}
+
+.redactor-info strong {
+    font-weight: bold;
+}
+
+/* Add some margin to the whole block */
+.redactor-info {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Center text within list items */
+}
+
+.posts-of-redactor {
+    display: flex;
+    margin-left: 40px;
+    text-align: left; /* Center text within list items */
+}
+
+.button-container {
+    text-align: right;
+    margin-top: 15px;
+    margin-right: 20px;
+}
+

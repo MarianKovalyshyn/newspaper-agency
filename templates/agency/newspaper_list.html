@@ -16,7 +16,7 @@
         <tr>
           <td>{{ newspaper.id }}</td>
           <td><a href="{{ newspaper.get_absolute_url }}">{{ newspaper.title }}</a></td>
-          <td>{{ newspaper.topic }}</td>
+          <td><a href="{{ newspaper.topic.get_absolute_url }}">{{ newspaper.topic }}</a></td>
           <td>{{ newspaper.published_date }}</td>
         </tr>
       {% endfor %}
