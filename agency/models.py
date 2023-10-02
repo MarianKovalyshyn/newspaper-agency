@@ -6,6 +6,9 @@ from django.urls import reverse
 class Topic(models.Model):
     name = models.CharField(max_length=255)
 
+    class Meta:
+        ordering = ["name"]
+
     def __str__(self) -> str:
         return self.name
 
@@ -29,6 +32,9 @@ class Newspaper(models.Model):
     published_date = models.DateTimeField()
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True, related_name="newspapers")
     publishers = models.ManyToManyField(Redactor, related_name="newspapers")
+
+    class Meta:
+        ordering = ["-published_date"]
 
     def __str__(self) -> str:
         return self.title

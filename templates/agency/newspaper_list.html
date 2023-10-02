@@ -1,20 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Newspapers</h1>
-  <h2><a href="{% url 'agency:newspaper-create' %}">Create newspaper</a></h2>
+  <div class="button-container">
+    <a href="{% url 'agency:newspaper-create' %}" class="button">Add</a>
+  </div>
+
+  <h1 style="text-align: center;">Newspapers</h1>
+
+  <div style="width: 15%;">
+    <form action="" method="get" style="display: flex; align-items: center;">
+      {{ search_form }}
+      <input type="submit" value="🔎" style="margin-left: 5px;">
+    </form>
+  </div>
 
   {% if newspaper_list %}
     <table class="table">
       <tr>
-        <th>ID</th>
         <th>Title</th>
         <th>Topic</th>
         <th>Date of publication</th>
       </tr>
       {% for newspaper in newspaper_list %}
         <tr>
-          <td>{{ newspaper.id }}</td>
           <td><a href="{{ newspaper.get_absolute_url }}">{{ newspaper.title }}</a></td>
           <td><a href="{{ newspaper.topic.get_absolute_url }}">{{ newspaper.topic }}</a></td>
           <td>{{ newspaper.published_date }}</td>

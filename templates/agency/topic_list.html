@@ -1,18 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Topics</h1>
-  <h2><a href="{% url 'agency:topic-create' %}">Add new topic</a></h2>
+  <div class="button-container">
+    <a href="{% url 'agency:topic-create' %}" class="button">Add</a>
+  </div>
+
+  <h1 style="text-align: center;">Topics</h1>
+
+  <div style="width: 15%;">
+    <form action="" method="get" style="display: flex; align-items: center;">
+      {{ search_form }}
+      <input type="submit" value="🔎" style="margin-left: 5px;">
+    </form>
+  </div>
 
   {% if topic_list %}
     <table class="table">
       <tr>
-        <th>ID</th>
         <th>Name</th>
       </tr>
       {% for topic in topic_list %}
         <tr>
-          <td>{{ topic.id }}</td>
           <td><a href="{{ topic.get_absolute_url }}">{{ topic.name }}</a></td>
         </tr>
       {% endfor %}

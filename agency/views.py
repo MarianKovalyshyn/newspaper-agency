@@ -1,8 +1,14 @@
+from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from agency.forms import RedactorCreationForm
+from agency.forms import (
+    RedactorCreationForm,
+    RedactorUsernameSearchForm,
+    NewspaperTitleSearchForm,
+    TopicNameSearchForm,
+)
 from agency.models import Redactor, Newspaper, Topic
 
 
@@ -17,6 +23,21 @@ def index(request) -> render:
 class RedactorListView(generic.ListView):
     model = Redactor
     paginate_by = 5
+    queryset = get_user_model().objects.all()
+
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
+        context = super(RedactorListView, self).get_context_data(**kwargs)
+        username = self.request.GET.get("username", "")
+        context["search_form"] = RedactorUsernameSearchForm(
+            initial={"username": username}
+        )
+        return context
+
+    def get_queryset(self) -> queryset:
+        username = self.request.GET.get("username")
+        if username:
+            return self.queryset.filter(username__icontains=username)
+        return self.queryset
 
 
 class RedactorDetailView(generic.DetailView):
@@ -43,6 +64,21 @@ class RedactorDeleteView(generic.DeleteView):
 class NewspaperListView(generic.ListView):
     model = Newspaper
     paginate_by = 5
+    queryset = Newspaper.objects.all()
+
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
+        context = super(NewspaperListView, self).get_context_data(**kwargs)
+        title = self.request.GET.get("title", "")
+        context["search_form"] = NewspaperTitleSearchForm(
+            initial={"title": title}
+        )
+        return context
+
+    def get_queryset(self) -> queryset:
+        title = self.request.GET.get("title")
+        if title:
+            return self.queryset.filter(title__icontains=title)
+        return self.queryset
 
 
 class NewspaperDetailView(generic.DetailView):
@@ -69,7 +105,21 @@ class NewspaperDeleteView(generic.DeleteView):
 class TopicListView(generic.ListView):
     model = Topic
     paginate_by = 5
+    queryset = Topic.objects.all()
 
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
+        context = super(TopicListView, self).get_context_data(**kwargs)
+        name = self.request.GET.get("name", "")
+        context["search_form"] = TopicNameSearchForm(
+            initial={"name": name}
+        )
+        return context
+
+    def get_queryset(self) -> queryset:
+        name = self.request.GET.get("name")
+        if name:
+            return self.queryset.filter(name__icontains=name)
+        return self.queryset
 
 class TopicDetailView(generic.DetailView):
     model = Topic

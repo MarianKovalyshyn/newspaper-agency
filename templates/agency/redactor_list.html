@@ -1,13 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Our redactors</h1>
-  <h2><a href="{% url 'agency:redactor-create' %}">Add</a></h2>
+  <div class="button-container">
+    <a href="{% url 'agency:redactor-create' %}" class="button">Add</a>
+  </div>
+  <h1 style="text-align: center;">Redactors</h1>
+
+  <div style="width: 15%;">
+    <form action="" method="get" style="display: flex; align-items: center;">
+      {{ search_form }}
+      <input type="submit" value="🔎" style="margin-left: 5px;">
+    </form>
+  </div>
+
+
 
   {% if redactor_list %}
     <table class="table">
       <tr>
-        <th>ID</th>
         <th>Username</th>
         <th>First name</th>
         <th>Last name</th>
@@ -15,7 +25,6 @@
       </tr>
       {% for redactor in redactor_list %}
         <tr>
-          <td>{{ redactor.id }}</td>
           <td>
             <a href="{{ redactor.get_absolute_url }}">
               {{ redactor.username }} {% if user == redactor %} (Me){% endif %}
