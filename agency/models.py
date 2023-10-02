@@ -41,3 +41,6 @@ class Newspaper(models.Model):
 
     def get_absolute_url(self) -> str:
         return reverse("agency:newspaper-detail", kwargs={"pk": self.pk})
+
+    def preview(self) -> str:
+        return self.content[:200] + " ..."

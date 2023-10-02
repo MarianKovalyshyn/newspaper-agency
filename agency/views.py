@@ -16,7 +16,10 @@ def index(request) -> render:
     """View function for the home page of the site."""
     num_visits = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
-    context = {"num_visits": num_visits + 1}
+    context = {
+        "num_visits": num_visits + 1,
+        "newspaper_list": Newspaper.objects.all(),
+    }
     return render(request, "agency/index.html", context=context)
 
 
