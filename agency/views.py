@@ -17,10 +17,13 @@ from agency.models import Redactor, Newspaper, Topic
 def index(request) -> render:
     """View function for the home page of the site."""
     num_visits = request.session.get("num_visits", 0)
+    newspaper_list = Newspaper.objects.select_related(
+        "topic"
+    ).prefetch_related("publishers")[:10]
     request.session["num_visits"] = num_visits + 1
     context = {
         "num_visits": num_visits + 1,
-        "newspaper_list": Newspaper.objects.select_related("topic").prefetch_related("publishers")[:10],
+        "newspaper_list": newspaper_list,
     }
     return render(request, "agency/index.html", context=context)
 
@@ -116,9 +119,7 @@ class TopicListView(generic.ListView):
     def get_context_data(self, *, object_list=None, **kwargs) -> dict:
         context = super(TopicListView, self).get_context_data(**kwargs)
         name = self.request.GET.get("name", "")
-        context["search_form"] = TopicNameSearchForm(
-            initial={"name": name}
-        )
+        context["search_form"] = TopicNameSearchForm(initial={"name": name})
         return context
 
     def get_queryset(self) -> queryset:
