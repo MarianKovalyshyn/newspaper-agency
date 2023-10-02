@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -19,7 +20,7 @@ def index(request) -> render:
     request.session["num_visits"] = num_visits + 1
     context = {
         "num_visits": num_visits + 1,
-        "newspaper_list": Newspaper.objects.all(),
+        "newspaper_list": Newspaper.objects.all()[:10],
     }
     return render(request, "agency/index.html", context=context)
 
@@ -48,19 +49,19 @@ class RedactorDetailView(generic.DetailView):
     model = Redactor
 
 
-class RedactorCreateView(generic.CreateView):
+class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
     model = Redactor
     success_url = reverse_lazy("agency:redactor-list")
     form_class = RedactorCreationForm
 
 
-class RedactorUpdateView(generic.UpdateView):
+class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Redactor
     success_url = reverse_lazy("agency:redactor-list")
     fields = ["first_name", "last_name", "years_of_experience"]
 
 
-class RedactorDeleteView(generic.DeleteView):
+class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Redactor
     success_url = reverse_lazy("agency:redactor-list")
 
@@ -89,19 +90,19 @@ class NewspaperDetailView(generic.DetailView):
     model = Newspaper
 
 
-class NewspaperCreateView(generic.CreateView):
+class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
     model = Newspaper
     success_url = reverse_lazy("agency:newspaper-list")
     form_class = NewspaperForm
 
 
-class NewspaperUpdateView(generic.UpdateView):
+class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Newspaper
     success_url = reverse_lazy("agency:newspaper-list")
-    fields = "__all__"
+    form_class = NewspaperForm
 
 
-class NewspaperDeleteView(generic.DeleteView):
+class NewspaperDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Newspaper
     success_url = reverse_lazy("agency:newspaper-list")
 
@@ -125,22 +126,23 @@ class TopicListView(generic.ListView):
             return self.queryset.filter(name__icontains=name)
         return self.queryset
 
+
 class TopicDetailView(generic.DetailView):
     model = Topic
 
 
-class TopicCreateView(generic.CreateView):
+class TopicCreateView(LoginRequiredMixin, generic.CreateView):
     model = Topic
     success_url = reverse_lazy("agency:topic-list")
     fields = "__all__"
 
 
-class TopicUpdateView(generic.UpdateView):
+class TopicUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Topic
     success_url = reverse_lazy("agency:topic-list")
     fields = "__all__"
 
 
-class TopicDeleteView(generic.DeleteView):
+class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Topic
     success_url = reverse_lazy("agency:topic-list")

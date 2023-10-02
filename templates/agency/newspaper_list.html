@@ -7,29 +7,53 @@
 
   <h1 style="text-align: center;">Newspapers</h1>
 
-  <div style="width: 15%;">
+  <div class="search-container">
     <form action="" method="get" style="display: flex; align-items: center;">
       {{ search_form }}
       <input type="submit" value="🔎" style="margin-left: 5px;">
     </form>
   </div>
 
-  {% if newspaper_list %}
-    <table class="table">
-      <tr>
-        <th>Title</th>
-        <th>Topic</th>
-        <th>Date of publication</th>
-      </tr>
-      {% for newspaper in newspaper_list %}
-        <tr>
-          <td><a href="{{ newspaper.get_absolute_url }}">{{ newspaper.title }}</a></td>
-          <td><a href="{{ newspaper.topic.get_absolute_url }}">{{ newspaper.topic }}</a></td>
-          <td>{{ newspaper.published_date }}</td>
-        </tr>
-      {% endfor %}
-    </table>
-  {% else %}
-    <p>We don't have any newspapers right now.</p>
-  {% endif %}
+
+{#  {% if newspaper_list %}#}
+{#    <table class="table">#}
+{#      <tr>#}
+{#        <th>Title</th>#}
+{#        <th>Topic</th>#}
+{#        <th>Date of publication</th>#}
+{#      </tr>#}
+{#      {% for newspaper in newspaper_list %}#}
+{#        <tr>#}
+{#          <td><a href="{{ newspaper.get_absolute_url }}">{{ newspaper.title }}</a></td>#}
+{#          <td><a href="{{ newspaper.topic.get_absolute_url }}">{{ newspaper.topic }}</a></td>#}
+{#          <td>{{ newspaper.published_date }}</td>#}
+{#        </tr>#}
+{#      {% endfor %}#}
+{#    </table>#}
+{#  {% else %}#}
+{#    <p>We don't have any newspapers right now.</p>#}
+{#  {% endif %}#}
+
+
+<div class="newspaper-container">
+    {% if newspaper_list %}
+        {% for newspaper in newspaper_list %}
+            <div class="newspaper">
+                <a href="{{ newspaper.get_absolute_url }}">
+                    <h3>{{ newspaper.title }}</h3>
+                </a>
+                <p>Topic: <a href="{{ newspaper.topic.get_absolute_url }}">{{ newspaper.topic }}</a></p>
+                <p>Date of Publication: {{ newspaper.published_date }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>We don't have any newspapers right now.</p>
+    {% endif %}
+</div>
+
+
+
+
+
+
 {% endblock %}

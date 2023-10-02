@@ -7,25 +7,24 @@
 
   <h1 style="text-align: center;">Topics</h1>
 
-  <div style="width: 15%;">
+  <div class="search-container">
     <form action="" method="get" style="display: flex; align-items: center;">
       {{ search_form }}
       <input type="submit" value="🔎" style="margin-left: 5px;">
     </form>
   </div>
 
-  {% if topic_list %}
-    <table class="table">
-      <tr>
-        <th>Name</th>
-      </tr>
+  <div class="topic-container">
+    {% if topic_list %}
       {% for topic in topic_list %}
-        <tr>
-          <td><a href="{{ topic.get_absolute_url }}">{{ topic.name }}</a></td>
-        </tr>
+        <div class="topic-bubble">
+          <a href="{{ topic.get_absolute_url }}">{{ topic.name }}</a>
+        </div>
       {% endfor %}
-    </table>
-  {% else %}
-    <p>We don't have any topics right now.</p>
-  {% endif %}
+    {% else %}
+      <p>We don't have any topics right now.</p>
+    {% endif %}
+  </div>
+
+
 {% endblock %}
