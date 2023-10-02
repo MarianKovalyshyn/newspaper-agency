@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
   <div class="button-container">
     <a href="{% url 'agency:topic-create' %}" class="button">Add</a>
   </div>
@@ -25,6 +26,5 @@
       <p>We don't have any topics right now.</p>
     {% endif %}
   </div>
-
 
 {% endblock %}
