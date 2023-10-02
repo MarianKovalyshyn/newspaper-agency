@@ -20,7 +20,7 @@ def index(request) -> render:
     request.session["num_visits"] = num_visits + 1
     context = {
         "num_visits": num_visits + 1,
-        "newspaper_list": Newspaper.objects.all()[:10],
+        "newspaper_list": Newspaper.objects.select_related("topic").prefetch_related("publishers")[:10],
     }
     return render(request, "agency/index.html", context=context)
 
@@ -69,7 +69,7 @@ class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):
 class NewspaperListView(generic.ListView):
     model = Newspaper
     paginate_by = 5
-    queryset = Newspaper.objects.all()
+    queryset = Newspaper.objects.select_related("topic")
 
     def get_context_data(self, *, object_list=None, **kwargs) -> dict:
         context = super(NewspaperListView, self).get_context_data(**kwargs)
@@ -88,6 +88,7 @@ class NewspaperListView(generic.ListView):
 
 class NewspaperDetailView(generic.DetailView):
     model = Newspaper
+    queryset = Newspaper.objects.select_related("topic")
 
 
 class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
@@ -129,6 +130,7 @@ class TopicListView(generic.ListView):
 
 class TopicDetailView(generic.DetailView):
     model = Topic
+    queryset = Topic.objects.prefetch_related("newspapers")
 
 
 class TopicCreateView(LoginRequiredMixin, generic.CreateView):
