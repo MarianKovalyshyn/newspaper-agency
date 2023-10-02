@@ -1,11 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Are you sure that you want to delete {{ topic.name }}?</h1>
-  <form action="" method="post">
-    {% csrf_token %}
+  <p style="text-align: center">Are you sure that you want to delete <strong>{{ topic.name }}</strong>?</p>
 
-    <input type="submit" value="Yes">
-    <a href="{% url 'agency:topic-detail' topic.pk %}">No</a>
-  </form>
+  <div class="centered-form">
+    <form action="" method="post">
+      {% csrf_token %}
+
+      <input type="submit" value="Yes">
+      <a href="{% url 'agency:topic-detail' topic.pk %}" class="button">No</a>
+    </form>
+  </div>
 {% endblock %}

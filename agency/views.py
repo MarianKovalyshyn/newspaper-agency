@@ -8,6 +8,7 @@ from agency.forms import (
     RedactorUsernameSearchForm,
     NewspaperTitleSearchForm,
     TopicNameSearchForm,
+    NewspaperForm,
 )
 from agency.models import Redactor, Newspaper, Topic
 
@@ -91,7 +92,7 @@ class NewspaperDetailView(generic.DetailView):
 class NewspaperCreateView(generic.CreateView):
     model = Newspaper
     success_url = reverse_lazy("agency:newspaper-list")
-    fields = "__all__"
+    form_class = NewspaperForm
 
 
 class NewspaperUpdateView(generic.UpdateView):

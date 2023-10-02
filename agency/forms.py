@@ -1,7 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
-from agency.models import Redactor
+from agency.models import Redactor, Newspaper
 
 
 class RedactorCreationForm(UserCreationForm):
@@ -12,6 +13,18 @@ class RedactorCreationForm(UserCreationForm):
             "last_name",
             "years_of_experience",
         )
+
+
+class NewspaperForm(forms.ModelForm):
+    class Meta:
+        model = Newspaper
+        fields = "__all__"
+
+        widgets = {
+            "title": forms.TextInput(attrs={"placeholder": "Enter title here"}),
+            "published_date": forms.DateInput(attrs={"type": "date"}),
+            "content": forms.Textarea(attrs={"rows": 5}),
+        }
 
 
 class RedactorUsernameSearchForm(forms.Form):

@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Are you sure that you want to delete {{ newspaper.title }}?</h1>
-  <form action="" method="post">
-    {% csrf_token %}
+  <p style="text-align: center">Are you sure that you want to delete <strong>{{ newspaper.title }}</strong>?</p>
+  <div class="centered-form">
+    <form action="" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Yes">
+      <a href="{% url 'agency:newspaper-detail' newspaper.pk %}" class="button">No</a>
+    </form>
+  </div>
 
-    <input type="submit" value="Yes">
-    <a href="{% url 'agency:newspaper-detail' newspaper.pk %}">No</a>
-  </form>
 {% endblock %}
