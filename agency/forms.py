@@ -1,4 +1,3 @@
-from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 
@@ -21,7 +20,7 @@ class NewspaperForm(forms.ModelForm):
         fields = "__all__"
 
         widgets = {
-            "title": forms.TextInput(attrs={"placeholder": "Enter title here"}),
+            "title": forms.TextInput(attrs={"placeholder": "Enter title"}),
             "published_date": forms.DateInput(attrs={"type": "date"}),
             "content": forms.Textarea(attrs={"rows": 5}),
         }

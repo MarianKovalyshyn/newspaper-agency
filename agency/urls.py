@@ -63,7 +63,7 @@ urlpatterns = [
         NewspaperDeleteView.as_view(),
         name="newspaper-delete",
     ),
-path("topics/", TopicListView.as_view(), name="topic-list"),
+    path("topics/", TopicListView.as_view(), name="topic-list"),
     path(
         "topics/<int:pk>/",
         TopicDetailView.as_view(),

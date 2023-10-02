@@ -1,4 +1,3 @@
-from django import forms
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
@@ -31,7 +30,9 @@ class Newspaper(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField()
     published_date = models.DateTimeField()
-    topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True, related_name="newspapers")
+    topic = models.ForeignKey(
+        Topic, on_delete=models.SET_NULL, null=True, related_name="newspapers"
+    )
     publishers = models.ManyToManyField(Redactor, related_name="newspapers")
 
     class Meta:
