@@ -28,7 +28,7 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "RENDER" not in os.environ
 
-ALLOWED_HOSTS = ["127.0.0.1", "https://newspaper-agency-xel6.onrender.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "newspaper-agency-xel6.onrender.com"]
 
 
 # Application definition
