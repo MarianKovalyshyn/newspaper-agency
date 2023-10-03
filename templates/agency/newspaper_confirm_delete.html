@@ -3,12 +3,11 @@
 {% block content %}
 
   <p style="text-align: center">Are you sure that you want to delete <strong>{{ newspaper.title }}</strong>?</p>
-  <div class="centered-form">
-    <form action="" method="post">
+
+  <form action="" method="post" style="text-align: center">
       {% csrf_token %}
       <input type="submit" value="Yes">
       <a href="{% url 'agency:newspaper-detail' newspaper.pk %}" class="button">No</a>
     </form>
-  </div>
 
 {% endblock %}

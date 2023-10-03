@@ -23,6 +23,7 @@ class NewspaperForm(forms.ModelForm):
             "title": forms.TextInput(attrs={"placeholder": "Enter title"}),
             "published_date": forms.DateInput(attrs={"type": "date"}),
             "content": forms.Textarea(attrs={"rows": 5}),
+            "publishers": forms.CheckboxSelectMultiple(),
         }
 
 

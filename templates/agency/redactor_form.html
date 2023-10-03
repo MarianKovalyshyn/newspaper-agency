@@ -2,12 +2,18 @@
 
 {% block content %}
 
-  <h1>{{ object|yesno:"Update,Add" }} redactor</h1>
+  <div class="form-container">
+    <h1>{{ object|yesno:"Update,Add" }} redactor</h1>
 
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-  </form>
+    <form action="" method="post" novalidate>
+      {% csrf_token %}
+      <div class="form-fields">
+        {{ form.as_p }}
+      </div>
+      <div class="form-submit">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
 
 {% endblock %}

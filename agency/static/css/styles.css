@@ -98,14 +98,14 @@ body {
 }
 
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
-    -moz-animation: none !important;
-    -webkit-animation: none !important;
-    -ms-animation: none !important;
-    animation: none !important;
-    -moz-transition: none !important;
-    -webkit-transition: none !important;
-    -ms-transition: none !important;
-    transition: none !important;
+    -moz-animation: none ant;
+    -webkit-animation: none ant;
+    -ms-animation: none ant;
+    animation: none ant;
+    -moz-transition: none ant;
+    -webkit-transition: none ant;
+    -ms-transition: none ant;
+    transition: none ant;
 }
 
 /* Type */
@@ -177,11 +177,11 @@ a:before {
 
 a:hover {
     border-bottom-color: transparent;
-    color: #2ebaae !important;
+    color: #2ebaae ant;
 }
 
 a:hover:before {
-    color: #2ebaae !important;
+    color: #2ebaae ant;
 }
 
 strong, b {
@@ -1865,7 +1865,7 @@ button,
     background-color: transparent;
     border: 0;
     box-shadow: inset 0 0 0 1px rgba(160, 160, 160, 0.3);
-    color: #3c3b3b !important;
+    color: #3c3b3b ant;
     cursor: pointer;
     display: inline-block;
     font-family: "Raleway", Helvetica, sans-serif;
@@ -1887,7 +1887,7 @@ input[type="button"]:hover,
 button:hover,
 .button:hover {
     box-shadow: inset 0 0 0 1px #2ebaae;
-    color: #2ebaae !important;
+    color: #2ebaae ant;
 }
 
 input[type="submit"]:hover:active,
@@ -1964,7 +1964,7 @@ button:disabled,
 .button.disabled,
 .button:disabled {
     pointer-events: none;
-    color: rgba(160, 160, 160, 0.3) !important;
+    color: rgba(160, 160, 160, 0.3) ant;
 }
 
 input[type="submit"].disabled:before, input[type="submit"]:disabled:before,
@@ -1976,7 +1976,7 @@ button.disabled:before,
 button:disabled:before,
 .button.disabled:before,
 .button:disabled:before {
-    color: rgba(160, 160, 160, 0.3) !important;
+    color: rgba(160, 160, 160, 0.3) ant;
 }
 
 /* Form */
@@ -1998,7 +1998,7 @@ form.search:before {
     font-variant: normal;
     text-rendering: auto;
     line-height: 1;
-    text-transform: none !important;
+    text-transform: none ant;
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
 }
@@ -2083,7 +2083,7 @@ textarea:focus {
     font-variant: normal;
     text-rendering: auto;
     line-height: 1;
-    text-transform: none !important;
+    text-transform: none ant;
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
 }
@@ -2140,98 +2140,27 @@ textarea {
     padding: 0.75em 1em;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-    display: block;
-    float: left;
-    margin-right: -2em;
-    opacity: 0;
-    width: 1em;
-    z-index: -1;
-}
-
-input[type="checkbox"] + label,
-input[type="radio"] + label {
-    text-decoration: none;
-    color: #646464;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 1em;
-    font-weight: 400;
-    padding-left: 2.4em;
-    padding-right: 0.75em;
-    position: relative;
-}
-
-input[type="checkbox"] + label:before,
-input[type="radio"] + label:before {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1;
-    text-transform: none !important;
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-}
-
-input[type="checkbox"] + label:before,
-input[type="radio"] + label:before {
-    background: rgba(160, 160, 160, 0.075);
-    border: solid 1px rgba(160, 160, 160, 0.3);
-    content: '';
-    display: inline-block;
-    font-size: 0.8em;
-    height: 2.0625em;
-    left: 0;
-    line-height: 2.0625em;
-    position: absolute;
-    text-align: center;
-    top: 0;
-    width: 2.0625em;
-}
-
-input[type="checkbox"]:checked + label:before,
-input[type="radio"]:checked + label:before {
-    background: #3c3b3b;
-    border-color: #3c3b3b;
-    color: #ffffff;
-    content: '\f00c';
-}
-
-input[type="checkbox"]:focus + label:before,
-input[type="radio"]:focus + label:before {
-    border-color: #2ebaae;
-    box-shadow: 0 0 0 1px #2ebaae;
-}
-
 input[type="radio"] + label:before {
     border-radius: 100%;
 }
 
 ::-webkit-input-placeholder {
-    color: #aaaaaa !important;
+    color: #aaaaaa ant;
     opacity: 1.0;
 }
 
 :-moz-placeholder {
-    color: #aaaaaa !important;
+    color: #aaaaaa ant;
     opacity: 1.0;
 }
 
 ::-moz-placeholder {
-    color: #aaaaaa !important;
+    color: #aaaaaa ant;
     opacity: 1.0;
 }
 
 :-ms-input-placeholder {
-    color: #aaaaaa !important;
+    color: #aaaaaa ant;
     opacity: 1.0;
 }
 
@@ -2251,7 +2180,7 @@ input[type="radio"] + label:before {
     font-variant: normal;
     text-rendering: auto;
     line-height: 1;
-    text-transform: none !important;
+    text-transform: none ant;
     font-family: 'Font Awesome 5 Free';
     font-weight: 400;
 }
@@ -2476,7 +2405,7 @@ ul.actions.fit.stacked {
         -ms-flex-direction: column;
         flex-direction: column;
         margin-left: 0;
-        width: 100% !important;
+        width: 100% ant;
     }
 
     ul.actions:not(.fixed) li {
@@ -3236,7 +3165,7 @@ body {
     font-variant: normal;
     text-rendering: auto;
     line-height: 1;
-    text-transform: none !important;
+    text-transform: none ant;
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
 }
@@ -3743,4 +3672,65 @@ body.is-menu-visible #menu {
     margin: 5px 0;
 }
 
+/*I use '!important' because it's a css from template and some thing behaves weirdly without it.'*/
 
+.form-container {
+  max-width: 600px; !important;
+  margin: 0 auto; !important;
+  padding: 20px; !important;
+  background-color: #f9f9f9; !important;
+  border-radius: 10px; !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); !important;
+}
+
+.form-fields {
+  margin-bottom: 10px; !important;
+}
+
+.form-fields label {
+  font-weight: bold; !important;
+}
+
+.form-fields input, .form-fields textarea {
+  width: 100%; !important;
+  padding: 8px; !important;
+  border: 1px solid #ccc; !important;
+  border-radius: 5px; !important;
+  box-sizing: border-box; !important;
+}
+
+.form-submit {
+  text-align: center; !important;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none; !important;
+  -moz-appearance: none; !important;
+  appearance: none; !important;
+  border: 2px solid #333; !important;
+  width: 20px; !important;
+  height: 20px; !important;
+  border-radius: 5px; !important;
+  cursor: pointer; !important;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #333; !important;
+}
+
+input[type="checkbox"]::before {
+  content: "\2713"; !important;
+  font-size: 16px; !important;
+  color: white; !important;
+  position: absolute; !important;
+  top: 50%; !important;
+  left: 50%; !important;
+  transform: translate(-50%, -50%); !important;
+  display: none; !important;
+}
+
+input[type="checkbox"]:checked::before {
+  display: block; !important;
+}
+
+/*I use '!important' because it's a css from template and some thing behaves weirdly without it.'*/

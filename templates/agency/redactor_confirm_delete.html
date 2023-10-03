@@ -3,13 +3,10 @@
 {% block content %}
   <p style="text-align: center">Are you sure that you want to delete <strong>{{ redactor.username }}</strong>?</p>
 
-  <div class="centered-form">
-    <form action="" method="post">
+  <form action="" method="post" style="text-align: center">
       {% csrf_token %}
-
       <input type="submit" value="Yes">
       <a href="{% url 'agency:redactor-detail' redactor.pk %}" class="button">No</a>
     </form>
-  </div>
 
 {% endblock %}
