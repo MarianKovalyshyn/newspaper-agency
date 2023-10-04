@@ -35,3 +35,6 @@ python manage.py runserver
 * **Unauthorized** users can only read: list of news, redactors and topics
 and their detail pages
 * **Authorized** users can add, edit and delete news, redactors and topics
+
+login: superadminuser
+pass: thehardestpasswordever
