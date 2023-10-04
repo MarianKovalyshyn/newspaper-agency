@@ -28,7 +28,7 @@ urlpatterns = [
         name="redactor-detail",
     ),
     path(
-        "redactors/create",
+        "redactors/create/",
         RedactorCreateView.as_view(),
         name="redactor-create",
     ),
@@ -49,7 +49,7 @@ urlpatterns = [
         name="newspaper-detail",
     ),
     path(
-        "newspapers/create",
+        "newspapers/create/",
         NewspaperCreateView.as_view(),
         name="newspaper-create",
     ),
@@ -70,7 +70,7 @@ urlpatterns = [
         name="topic-detail",
     ),
     path(
-        "topics/create",
+        "topics/create/",
         TopicCreateView.as_view(),
         name="topic-create",
     ),

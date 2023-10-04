@@ -7,6 +7,13 @@ with news, redactors and topics.
 
 [Newspaper Agency deployed to Render.com](https://newspaper-agency-xel6.onrender.com/)
 
+### Use this user to test the website
+* **login**: superadminuser
+* **password**: thehardestpasswordever
+
+## Demo of home page
+![img.png](img.png)
+
 ## Installing / Getting started
 
 A quick introduction of the minimal setup you need to run it.
@@ -16,8 +23,10 @@ A quick introduction of the minimal setup you need to run it.
 git clone https://github.com/MarianKovalyshyn/newspaper-agency.git
 cd newspaper-agency/
 python3 -m venv venv
-source venv/bin/activate
+source venv/bin/activate (MacOS)
+venv\Scripts\activate (Windows)
 pip install -r requirements.txt
+python manage.py migrate
 python manage.py runserver
 ```
 
