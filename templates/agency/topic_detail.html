@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="button-container">
+    <a href="{% url 'agency:topic-update' pk=topic.id %}" class="button small">Edit</a>
+    <a href="{% url 'agency:topic-delete' pk=topic.id %}" class="button small">Delete</a>
+  </div>
+
+  <h2 style="text-align: center;">
+    {{ topic.name }}
+  </h2>
+
+  {% if topic.newspapers.all %}
+    <section class="posts-of-redactor">
+      <ul class="posts">
+        <li>
+          <article>
+            <header>
+              {% for newspaper in topic.newspapers.all %}
+                <h3><a href="{% url 'agency:newspaper-detail' pk=newspaper.id %}">{{ newspaper.title }}</a></h3>
+                <time class="published">{{ newspaper.published_date }}</time>
+              {% endfor %}
+            </header>
+          </article>
+        </li>
+      </ul>
+    </section>
+  {% else %}
+    <p>There is no newspapers with this topic yet.</p>
+  {% endif %}
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+  <div id="wrapper">
+    <!-- Main -->
+    <div id="main">
+
+      <!-- Post -->
+      <article class="post">
+        <header>
+          <div class="title">
+            <h2>{{ newspaper.title }}</h2>
+            <a href="{% url 'agency:newspaper-update' pk=newspaper.id %}" class="button">Edit</a>
+            <a href="{% url 'agency:newspaper-delete' pk=newspaper.id %}" class="button">Delete</a>
+          </div>
+          <div class="meta">
+            <time class="published">{{ newspaper.published_date }}</time>
+            {% for publisher in newspaper.publishers.all %}
+              <a href="{{ publisher.get_absolute_url }}" class="author">
+                <span class="name">{{ publisher.first_name }} {{ publisher.last_name }}</span>
+              </a>
+            {% endfor %}
+          </div>
+        </header>
+        <p>{{ newspaper.content }}</p>
+        <footer>
+          <ul class="stats">
+            <li><a href="{{ newspaper.topic.get_absolute_url }}">{{ newspaper.topic }}</a></li>
+          </ul>
+        </footer>
+      </article>
+    </div>
+  </div>
+
+{% endblock %}

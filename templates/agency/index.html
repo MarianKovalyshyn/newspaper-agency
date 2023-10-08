@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div id="wrapper">
+    <!-- Main -->
+    <div id="main">
+
+      <!-- Post -->
+      {% for newspaper in newspaper_list %}
+        <article class="post">
+          <header>
+            <div class="title">
+              <h2><a href="{{ newspaper.get_absolute_url }}">{{ newspaper.title }}</a></h2>
+            </div>
+            <div class="meta">
+              <time class="published">{{ newspaper.published_date }}</time>
+              {% for publisher in newspaper.publishers.all %}
+                <a href="{{ publisher.get_absolute_url }}" class="author">
+                  <span class="name">{{ publisher.first_name }} {{ publisher.last_name }}</span>
+                </a>
+              {% endfor %}
+            </div>
+          </header>
+          <p>{{ newspaper.preview }}</p>
+          <footer>
+            <ul class="actions">
+              <li><a href="{{ newspaper.get_absolute_url }}" class="button large">Continue Reading</a></li>
+            </ul>
+            <ul class="stats">
+              <li><a href="{{ newspaper.topic.get_absolute_url }}">{{ newspaper.topic.name }}</a></li>
+            </ul>
+          </footer>
+        </article>
+      {% endfor %}
+
+    </div>
+  </div>
+
+{% endblock %}

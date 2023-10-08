@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="button-container">
+    <a href="{% url 'agency:redactor-update' pk=redactor.id %}" class="button small">Edit</a>
+    <a href="{% url 'agency:redactor-delete' pk=redactor.id %}" class="button small">Delete</a>
+  </div>
+
+  <div class="redactor-info">
+    <h2>{{ redactor.first_name }} {{ redactor.last_name }} [{{ redactor.username }}]</h2>
+    <p>{{ redactor.years_of_experience }} years of experience</p>
+  </div>
+
+  <h1 style="margin-left: 40px">News by {{ redactor.first_name }} {{ redactor.last_name }}</h1>
+  <section class="posts-of-redactor">
+    <ul class="posts">
+      <li>
+        <article>
+          <header>
+            {% for newspaper in redactor.newspapers.all %}
+              <h3><a href="{% url 'agency:newspaper-detail' pk=newspaper.id %}">{{ newspaper.title }}</a></h3>
+              <time class="published">{{ newspaper.published_date }}</time>
+            {% endfor %}
+          </header>
+        </article>
+      </li>
+    </ul>
+  </section>
+
+{% endblock %}

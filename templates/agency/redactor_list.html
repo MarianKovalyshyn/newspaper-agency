@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="button-container">
+    <a href="{% url 'agency:redactor-create' %}" class="button">Add</a>
+  </div>
+
+  <h1 style="text-align: center;">Redactors</h1>
+
+  <div class="search-container">
+    <form action="" method="get" style="display: flex; align-items: center;">
+      {{ search_form }}
+      <input type="submit" value="🔎" style="margin-left: 5px;">
+    </form>
+  </div>
+
+  <div class="redactor-container">
+    {% if redactor_list %}
+      {% for redactor in redactor_list %}
+        <div class="redactor-card">
+          <a href="{{ redactor.get_absolute_url }}">
+            <h3>{{ redactor.username }}{% if user == redactor %} (Me){% endif %}</h3>
+          </a>
+          <p>First Name: {{ redactor.first_name }}</p>
+          <p>Last Name: {{ redactor.last_name }}</p>
+          <p>Years of Experience: {{ redactor.years_of_experience }}</p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>We don't have redactors right now.</p>
+    {% endif %}
+  </div>
+
+{% endblock %}
